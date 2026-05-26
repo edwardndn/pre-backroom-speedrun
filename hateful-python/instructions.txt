@@ -35,3 +35,30 @@ The same goes for Move and its subclasses.
 You can however add things to plan.py otherwise.
 
 ----------------------------------------
+
+The Task
+
+- Complete the plan function so that given a Player and a Card, it returns a list of Moves that will allow the player to afford the card.
+
+- This does not have to be the "best" sequence of moves. It just has to work.
+
+- You may assume that there is always a way to do this (the case where there is no way is significantly trickier in general).
+
+- You will not be given bad data, so you don't need to do any validation of the input.
+
+- The Player will always be initialised with a caravan value for each gem type.
+
+For example, if the player had 3 yellow gems, and the a single upgrade 2 card, with a target card that required 2 green gems, one solution would be [Play 0] (note this is just a string representation of the list), so would [Rest, Rest, Play 0, Rest] even though it has unneeded steps. If instead they had the same starting point, but the goal required 2 blue gems, [Play 0, Rest, Play 0, Rest, Play 0] would work.
+
+----------------------------------------
+
+Some Guidance
+There are basically two ways to solve this:
+
+- Depth-first search - from a given game state, out of all the available moves, pick one, move to it and repeat. If there are no more moves, go back to the previous step and try a different move. If you find a successful move, return it, if you backtrack all the way to the beginning with not moves left, there is no solution (though this case won't matter here).
+
+- Breadth-first search - from a given game state, expand all the possible moves, and with each one in turn repeat this process. If a successful sequence is found, return it.
+
+In both approaches, the key questions are how to keep track of where you're up to, and how to store where you want to go next. A more oblique hint is that Python's list data structure can handle the core function of both approaches, though there are other ways.
+
+There are other, more complicated approaches, but they don't really gain you anything in this setting.
