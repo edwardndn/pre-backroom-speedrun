@@ -14,30 +14,26 @@ public class Game {
     
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        System.out.println("What did you have your deck saved as? ");
-        String deck = s.nextLine();
         
-        read(deck);
+        read(args);
 
         Player Guy = new Player();
 
         while (!hasWon(Guy)) {
-            startTurn(Guy);
+            startTurn(Guy,s);
         }
         s.close();
     }
 
-    private static void startTurn(Player Dummy) {
-        Scanner s = new Scanner(System.in);
+    private static void startTurn(Player Dummy,Scanner s) {
         prompt();
         int move = s.nextInt();
         switch (move) {
-            case 0 -> playProcedure(Dummy); // play a card
+            case 0 -> playProcedure(Dummy,s); // play a card
             case 1 -> restProcedure(Dummy); // rest
-            case 2 -> buyProcedure(Dummy); // buy from merchant
-            case 3 -> claimProcedure(Dummy); // claim from pool
+            case 2 -> buyProcedure(Dummy,s); // buy from merchant
+            case 3 -> claimProcedure(Dummy,s); // claim from pool
         }
-        s.close();
     }
 
     private static void prompt() {
@@ -54,7 +50,16 @@ public class Game {
         System.out.println("You rested and refilled your hand.");
     }
 
-    private static void buyProcedure(Player Dummy) {
+    private static int validate(int selection, int listSize, Scanner s) {
+        while (selection < 0 || selection > listSize) {
+            System.out.println("That's not a valid selection, try again.");
+            System.out.print("Enter your selection: ");
+            selection = s.nextInt();
+        }
+        return selection;
+    }
+
+    private static void buyProcedure(Player Dummy, Scanner s) {
         System.out.println("======================");
         System.out.println("Current Merchant Cards");
         System.out.println("======================");
@@ -65,77 +70,81 @@ public class Game {
         System.out.print("You have the following gems: ");
         Dummy.printCaravan();
         System.out.println("Which card would you like to buy?");
+
         System.out.print("Enter your selection: ");
-        
-        Scanner s = new Scanner(System.in);
-        int selection = s.nextInt();
+        int selection = validate(s.nextInt(), merchant.size(), s);
+
         if (Dummy.canBuy(selection)) {
             Dummy.buy(selection, merchant.get(selection));
             System.out.println("You bought the card.");
+            merchant.remove(selection);
         } else {
             System.out.println("You cannot buy that card.");
         }
-        s.close();
     }
 
-    private static void claimProcedure(Player Dummy) {
+    private static void claimProcedure(Player Dummy, Scanner s) {
         System.out.println("===================");
         System.out.println("Current Point Cards");
         System.out.println("===================");
-        
+
         printCardsIn(pool);
 
         System.out.println("===================");
         System.out.print("You have the following gems: ");
         Dummy.printCaravan();
         System.out.println("Which card would you like to claim?");
+
         System.out.print("Enter your selection: ");
-        
-        Scanner s = new Scanner(System.in);
-        int selection = s.nextInt();
+        int selection = validate(s.nextInt(),pool.size(),s);
+
         if (Dummy.canClaim(pool.get(selection))) {
             Dummy.claim(pool.get(selection));
             System.out.println("You claimed the card.");
+            pool.remove(selection);
         } else {
             System.out.println("You cannot claim that card.");
         }
-        s.close();
     }
 
-    private static void playProcedure(Player Dummy) {
+    private static void playProcedure(Player Dummy, Scanner s) {
         System.out.println("============");
         System.out.println("Current Hand");
         System.out.println("============");
-
+        
         Dummy.printHand();
-    
-        System.out.println("You have the following gems: ");
+        
+        System.out.println("============");
+        System.out.println("You have the following gems:");
         Dummy.printCaravan();
         System.out.println("Which card would you like to play?");
+        
         System.out.print("Enter your selection: ");
-
-        Scanner s = new Scanner(System.in);
-        int selection = s.nextInt();
+        int selection = validate(s.nextInt(), Dummy.handSize(), s);
+        
         if (Dummy.canPlay(selection)) {
             Dummy.play(selection);
             System.out.println("You played the card.");
-            System.out.println("You have the following gems: ");
+            System.out.println("You have the following gems:");
             Dummy.printCaravan();  
         } else {
             System.out.println("You cannot play that card.");
         }
-        s.close();
     }
 
-    public static void read(String deck) {
+    public static void read(String[] args) {
         try {
-            Scanner reader = new Scanner(new File(deck));
+            Scanner reader = new Scanner(new File(args[0]));
             while (reader.hasNextLine()) {
                 String line = reader.nextLine().trim();
                 switch (line) {
                     case "Trade": {
                         Map<Gem,Integer> cost = mapGem(reader.nextLine().trim());
-                        Map<Gem,Integer> value = mapGem(reader.nextLine().trim());
+                        Map<Gem, Integer> value = mapGem(reader.nextLine().trim());
+                        // System.out.println("TRADE");
+                        // System.out.println(cost);
+                        // System.out.println(value);
+                        // System.out.println("--------------------");
                         TradeCard t = new TradeCard(cost, value);
                         merchant.add(t);
                         continue;
@@ -147,7 +156,10 @@ public class Game {
                         continue;
                     }
                     case "Point": {
-                        Map<Gem,Integer> cost = mapGem(reader.nextLine().trim());
+                        Map<Gem, Integer> cost = mapGem(reader.nextLine().trim());
+                        // System.out.println("POINT");
+                        // System.out.println(cost);
+                        // System.out.println("--------------------");
                         int worth = Integer.parseInt(reader.nextLine().trim());
                         PointCard p = new PointCard(cost, worth);
                         pool.add(p);
@@ -166,30 +178,16 @@ public class Game {
     }
     
     private static Map<Gem, Integer> mapGem(String line) {
-        List<Integer> intList = new ArrayList<>();
-        Map<Gem, Integer> map = new HashMap<Gem, Integer>();
+        Map<Gem, Integer> map = new HashMap<>();
         String[] intString = line.trim().split(",\\s*");
-        for (String s : intString) {
-            intList.add(Integer.parseInt(s));
+        Gem[] gems = Gem.values();
+
+        for (int i = 0; i < intString.length && i < gems.length; i++) {
+            int val = Integer.parseInt(intString[i].trim());
+            if (val > 0)
+                map.put(gems[i], val);
         }
-        for (int i : intList) {
-            for (Gem g : Gem.values()) {
-                switch (g) {
-                    case YELLOW:
-                        map.put(Gem.YELLOW, i);
-                        break;
-                    case GREEN:
-                        map.put(Gem.GREEN, i);
-                        break;
-                    case BLUE:
-                        map.put(Gem.BLUE, i);
-                        break;
-                    case PINK:
-                        map.put(Gem.PINK, i);
-                        break;
-                }
-            }
-        }
+
         return map;
     }
 
@@ -215,7 +213,7 @@ public class Game {
                             
     private static boolean hasWon(Player Dummy) {
         if (Dummy.hasFivePointCards() || pool.size() == 0 || Dummy.handSize() == 0) {
-            System.out.println(Dummy.score());
+            System.out.println("The player scored "+Dummy.score()+" points.");
             return true;
         } else {
             return false;
