@@ -24,10 +24,19 @@ public class Game {
         }
         s.close();
     }
+    
+    private static int validate(int selection, int listSize, Scanner s) {
+        while (selection < 0 || selection >= listSize) {
+            System.out.println("That's not a valid selection, try again.");
+            System.out.print("Enter your selection: ");
+            selection = s.nextInt();
+        }
+        return selection;
+    }
 
     private static void startTurn(Player Dummy,Scanner s) {
         prompt();
-        int move = s.nextInt();
+        int move = validate(s.nextInt(),4,s);
         switch (move) {
             case 0 -> playProcedure(Dummy,s); // play a card
             case 1 -> restProcedure(Dummy); // rest
@@ -50,14 +59,6 @@ public class Game {
         System.out.println("You rested and refilled your hand.");
     }
 
-    private static int validate(int selection, int listSize, Scanner s) {
-        while (selection < 0 || selection > listSize) {
-            System.out.println("That's not a valid selection, try again.");
-            System.out.print("Enter your selection: ");
-            selection = s.nextInt();
-        }
-        return selection;
-    }
 
     private static void buyProcedure(Player Dummy, Scanner s) {
         System.out.println("======================");
@@ -96,7 +97,7 @@ public class Game {
         System.out.println("Which card would you like to claim?");
 
         System.out.print("Enter your selection: ");
-        int selection = validate(s.nextInt(),pool.size(),s);
+        int selection = validate(s.nextInt(),pool.size(),s); 
 
         if (Dummy.canClaim(pool.get(selection))) {
             Dummy.claim(pool.get(selection));
@@ -212,7 +213,7 @@ public class Game {
     }
                             
     private static boolean hasWon(Player Dummy) {
-        if (Dummy.hasFivePointCards() || pool.size() == 0 || Dummy.handSize() == 0) {
+        if (Dummy.hasFivePointCards() || pool.size() == 0) {
             System.out.println("The player scored "+Dummy.score()+" points.");
             return true;
         } else {
