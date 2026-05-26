@@ -1,0 +1,1 @@
+public enum Gem{YELLOW, GREEN, BLUE, PINK};
