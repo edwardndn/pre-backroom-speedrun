@@ -1,0 +1,37 @@
+Shifting to Python, we're going to solve the algorithmic problem of figuring out how to buy a Point Card. There's a relatively simple solution for this in terms of the code you have to write, but it requires clear thinking and clean handling of the data.
+
+Note that to make this feasible, a number of changes have been made to how things work (to make them simpler), so read the following carefully.
+---------------------------------------
+
+This time we start with 3 files, parts.py, runner.py and plan.py.
+
+- runner.py just has a place so you can run some code and test things. This is not part of the assignment.
+
+- parts.py has python implementations of a selection of key components from the previous sections. Note that there's a few changes here. Some things are just name changes to fit Python's rules and we won't enumerate them, the Card class and its subclasses work in essentially the same way. The Gem enum now uses the Python enum structure, but is essentially the same. Player is mostly the same, but is discussed in more detail just below.
+
+- plan.py is the place where you will do your work. It has an abstract Move class with two subclasses Play (which stores an int) and Rest, which represent the actions of playing a card in the players hand, and resting, respectively. Most importantly it has a function plan which takes a Player, a target PointCard and returns a list of Moves that, if applied, should leave the player in a position to buy the Point card.
+
+----------------------------------------
+
+The Player class has had its function altered slightly to make this task simpler:
+
+- The cards in the Player's hand now have fixed positions. Whether they are used or not is track by a second list. So the card in position i either can or can't be used, but it's always the same card.
+
+- There are no buy or claim functions - these are not needed for this task.
+
+- A has_gems function that takes a dict[Gem, int] has been added/exposed, this will allow a couple of things, particularly checking if the player has enough gems to pay for the target Point card.
+
+- A copy function has been added that returns a deep copy of the Player object. While this is not strictly necessary to solve the task, it's almost certainly very useful.
+
+- The Player is initialised with a hand of cards and a starting caravan of Gems. This is not necessarily the starting point for the general game (this represents trying to solve this problem at any given point in the game).
+
+----------------------------------------
+
+Don't mess with anything in parts.py, this code will be overlaid with testing versions, so any changes you make will be ignored, and thus not useful (although if you understand this sentence, you will know there are things you can do that won't cause problems).
+The same goes for Move and its subclasses.
+
+----------------------------------------
+
+You can however add things to plan.py otherwise.
+
+----------------------------------------
