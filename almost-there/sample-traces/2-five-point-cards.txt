@@ -1,0 +1,122 @@
+Let's Play Decade!
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 2
+======================
+Current Merchant Cards
+======================
+0. Trade: Nothing -> 100 YELLOW, 100 GREEN, 100 BLUE, 100 PINK
+======================
+You have the following gems: 3 YELLOW, 0 GREEN, 0 BLUE, 0 PINK
+Which card would you like to buy?
+Enter your selection: 0
+You bought the card.
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 0
+============
+Current Hand
+============
+0. Trade: Nothing -> 2 YELLOW
+1. Upgrade: 2
+2. Trade: Nothing -> 100 YELLOW, 100 GREEN, 100 BLUE, 100 PINK
+============
+You have the following gems:
+3 YELLOW, 0 GREEN, 0 BLUE, 0 PINK
+Which card would you like to play?
+Enter your selection: 2
+You played the card.
+You have the following gems:
+103 YELLOW, 100 GREEN, 100 BLUE, 100 PINK
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 3
+===================
+Current Point Cards
+===================
+0. Points: 3 GREEN, 2 PINK -> 14
+1. Points: 3 YELLOW, 2 PINK -> 11
+2. Points: 2 GREEN, 2 BLUE, 2 PINK -> 19
+3. Points: 2 GREEN, 2 PINK -> 12
+4. Points: 1 YELLOW, 1 GREEN, 1 BLUE, 1 PINK -> 12
+===================
+You have the following gems: 103 YELLOW, 100 GREEN, 100 BLUE, 100 PINK
+Which card would you like to claim?
+Enter your selection: 0
+You claimed the card.
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 3
+===================
+Current Point Cards
+===================
+0. Points: 3 YELLOW, 2 PINK -> 11
+1. Points: 2 GREEN, 2 BLUE, 2 PINK -> 19
+2. Points: 2 GREEN, 2 PINK -> 12
+3. Points: 1 YELLOW, 1 GREEN, 1 BLUE, 1 PINK -> 12
+===================
+You have the following gems: 103 YELLOW, 97 GREEN, 100 BLUE, 98 PINK
+Which card would you like to claim?
+Enter your selection: 0
+You claimed the card.
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 3
+===================
+Current Point Cards
+===================
+0. Points: 2 GREEN, 2 BLUE, 2 PINK -> 19
+1. Points: 2 GREEN, 2 PINK -> 12
+2. Points: 1 YELLOW, 1 GREEN, 1 BLUE, 1 PINK -> 12
+===================
+You have the following gems: 100 YELLOW, 97 GREEN, 100 BLUE, 96 PINK
+Which card would you like to claim?
+Enter your selection: 0
+You claimed the card.
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 3
+===================
+Current Point Cards
+===================
+0. Points: 2 GREEN, 2 PINK -> 12
+1. Points: 1 YELLOW, 1 GREEN, 1 BLUE, 1 PINK -> 12
+===================
+You have the following gems: 100 YELLOW, 95 GREEN, 98 BLUE, 94 PINK
+Which card would you like to claim?
+Enter your selection: 0
+You claimed the card.
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 3
+===================
+Current Point Cards
+===================
+0. Points: 1 YELLOW, 1 GREEN, 1 BLUE, 1 PINK -> 12
+===================
+You have the following gems: 100 YELLOW, 93 GREEN, 98 BLUE, 92 PINK
+Which card would you like to claim?
+Enter your selection: 0
+You claimed the card.
+The player scored 348 points!

@@ -1,0 +1,52 @@
+Let's Play Decade!
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 2
+======================
+Current Merchant Cards
+======================
+0. Trade: Nothing -> 3 GREEN, 2 PINK
+======================
+You have the following gems: 3 YELLOW, 0 GREEN, 0 BLUE, 0 PINK
+Which card would you like to buy?
+Enter your selection: 0
+You bought the card.
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 0
+============
+Current Hand
+============
+0. Trade: Nothing -> 2 YELLOW
+1. Upgrade: 2
+2. Trade: Nothing -> 3 GREEN, 2 PINK
+============
+You have the following gems:
+3 YELLOW, 0 GREEN, 0 BLUE, 0 PINK
+Which card would you like to play?
+Enter your selection: 2
+You played the card.
+You have the following gems:
+3 YELLOW, 3 GREEN, 0 BLUE, 2 PINK
+Would you like to:
+0. Play a card
+1. Rest
+2. Buy a Merchant Card
+3. Claim a Point Card
+Enter your selection: 3
+===================
+Current Point Cards
+===================
+0. Points: 3 YELLOW, 3 GREEN, 2 PINK -> 14
+===================
+You have the following gems: 3 YELLOW, 3 GREEN, 0 BLUE, 2 PINK
+Which card would you like to claim?
+Enter your selection: 0
+You claimed the card.
+The player scored 14 points!

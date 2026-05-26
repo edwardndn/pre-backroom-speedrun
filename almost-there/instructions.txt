@@ -1,0 +1,20 @@
+The Task
+Starting with the skeleton in Game, implement the game logic and UI to play the game:
+
+Game should take a single command line parameter (i.e. there'll be a String in args[0] in main) which is the name of the file containing the details of the deck.
+
+It should then play a game according to the rules given in the instructions. Some example games are given below. Not every game will look exactly like any particular example, but the examples show all the possible output structures.
+
+The Game will interact with the human player via the command line/terminal.
+-----------------------------------------------
+The Deck File Format
+The deck is presented in a very simple format. Each card is a sequence of lines:
+
+Trade cards are encoded with the header line Trade, and then two lines of 4 comma separated positive integers giving the gem counts for the cost and value, in that order.
+
+Upgrade cards are encoded with the header Upgrade and the upgrade value on the next line.
+
+Point cards are encode with the header line Point and the two following lines give the cost and the point value as a set of 4 comma separated values and a single value respectively.
+
+The following traces of partial games show the basic behaviours. Given a different deck, the details of the cards of course change. Note that the input is included in these traces - the numbers following the Enter your selection:  prompt are input, and the only input.
+------------------------------------------------

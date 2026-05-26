@@ -18,7 +18,7 @@ public class Player {
         }
         this.caravan.put(Gem.YELLOW, 3);
         this.hand = new LinkedList<Card>();
-        this.hand.add(new TradeCard(Map.<Gem, Integer>of(), Map.<Gem,Integer>of(Gem.YELLOW, 2)));
+        this.hand.add(new TradeCard(Map.<Gem, Integer>of(), Map.<Gem, Integer>of(Gem.YELLOW, 2)));
         this.hand.add(new UpgradeCard(2));
         this.used = new LinkedList<Card>();
         this.pointCards = new ArrayList<PointCard>();
