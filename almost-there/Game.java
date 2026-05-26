@@ -1,8 +1,6 @@
 import java.util.Map;
 import java.util.HashMap;
-// import java.util.EnumMap;
 import java.util.List;
-// import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
@@ -142,10 +140,6 @@ public class Game {
                     case "Trade": {
                         Map<Gem,Integer> cost = mapGem(reader.nextLine().trim());
                         Map<Gem, Integer> value = mapGem(reader.nextLine().trim());
-                        // System.out.println("TRADE");
-                        // System.out.println(cost);
-                        // System.out.println(value);
-                        // System.out.println("--------------------");
                         TradeCard t = new TradeCard(cost, value);
                         merchant.add(t);
                         continue;
@@ -158,9 +152,6 @@ public class Game {
                     }
                     case "Point": {
                         Map<Gem, Integer> cost = mapGem(reader.nextLine().trim());
-                        // System.out.println("POINT");
-                        // System.out.println(cost);
-                        // System.out.println("--------------------");
                         int worth = Integer.parseInt(reader.nextLine().trim());
                         PointCard p = new PointCard(cost, worth);
                         pool.add(p);
